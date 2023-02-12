@@ -1,1 +1,1 @@
-# how-golang-works
+# How Golang works
