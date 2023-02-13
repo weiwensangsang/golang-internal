@@ -38,7 +38,8 @@ The goal of this project is to answer a series of questions like this from the p
 #### Variable
 
 1. [How to Swap the Values of Two Variables](problems/swap-the-values-of-two-variables.md)
-2. 
+2. [Use New or Make](problems/use-new-or-make.md)
+3. Use New or Make
 
 #### GC
 
