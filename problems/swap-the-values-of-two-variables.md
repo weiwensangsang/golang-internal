@@ -104,30 +104,6 @@ We can see the result, The compiler insert a CX as a temp values.
 
 ![ssa](../pictures/ssa.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
 #### Reference
 
 1. https://github.com/golang/go/tree/master/src/cmd/compile
-
-
-
-
-
-
-
-
-
-
-
-
