@@ -1,38 +1,50 @@
-# How Golang works
+# How to Swap the Values of Two Variables
 
 
 
-Go language has many amazing features and syntax, such as how to swap the values of two variables.
+Just this.
 
 ```go
-package main
-
-import "fmt"
-
-func main() {
-    a := 5
-    b := 10
-    fmt.Println("Before swapping, values of a and b are:", a, b)
-    a, b = b, a
-    fmt.Println("After swapping, values of a and b are:", a, b)
-}
-```
-
-Output:
-
-```
-Before swapping, values of a and b are: 5 10
-After swapping, values of a and b are: 10 5
+a := 1
+b := 2
+a, b, a = b, a, b
 ```
 
 
 
-This interesting syntax feature is used to test whether an engineer has enough understanding of the Go language. But why is this way of exchanging values valid? How is this syntax feature implemented in Go?
+#### Why?
 
-The goal of this project is to answer a series of questions like this from the perspective of the underlying implementation in Go, by explaining the source code, including syntax, data structures, and a series of concurrency issues.
+See how code actually works,
+
+```HTML
+main.go:5   0x454b9b 48c744241801000000   mov qword ptr [rsp+0x18], 0x1  // a:=1
+main.go:6   0x454ba4 48c744241002000000   mov qword ptr [rsp+0x10], 0x2  // b:=2
+main.go:7   0x454bad 488b442418           mov rax, qword ptr [rsp+0x18]
+main.go:7   0x454bb2 4889442428           mov qword ptr [rsp+0x28], rax  // aTemp := a
+main.go:7   0x454bb7 488b442410           mov rax, qword ptr [rsp+0x10]
+main.go:7   0x454bbc 4889442420           mov qword ptr [rsp+0x20], rax  // bTemp := b
+main.go:7   0x454bc1 488b442410           mov rax, qword ptr [rsp+0x10]
+main.go:7   0x454bc6 4889442418           mov qword ptr [rsp+0x18], rax  // a = b
+main.go:7   0x454bcb 488b442428           mov rax, qword ptr [rsp+0x28]
+main.go:7   0x454bd0 4889442410           mov qword ptr [rsp+0x10], rax  // b = aTemp
+main.go:7   0x454bd5 488b442420           mov rax, qword ptr [rsp+0x20]
+main.go:7   0x454bda 4889442418           mov qword ptr [rsp+0x18], rax  // a = bTemp
+```
 
 
+This code create 2 more variables [rsp+0x28] as aTemp, [rsp+0x20] as bTemp.
 
-#### Problems
+The principle of the two value exchange operations here is to store the values of the two assigned variables in **temporary variables**, and then use the temporary variables to assign values. So the order of assignment in this example has no effect on the result, and the result is still a = 2, b = 1.
 
-1. swap the values of two variables.
+There is no need to write the swap function and then inline it like C language, which is equivalent to leaving the dirty work to the compiler.
+
+The code actually like this.
+
+```
+a := 1
+b := 2
+FIND a, b, a = b, a, b // Need use a and b to set values.
+aTemp = a
+bTemp = b
+a, b, a = bTemp, aTemp, bTemp
+```
