@@ -39,7 +39,15 @@ The goal of this project is to answer a series of questions like this from the p
 
 1. [How to Swap the Values of Two Variables](problems/swap-the-values-of-two-variables.md)
 2. [Use New or Make](problems/use-new-or-make.md)
-3. Use New or Make
+3. string literals, byte and rune data types
+4. [struct, Interfaces,  point and Object](problems/struct.md)
+5. [How Context Works](problems/how-context-works.md)
+
+#### GPM
+
+1. [What is GPM and Why need P?](problems/what-is-gpm-and-why-need-p.md)
+
+
 
 #### GC
 
@@ -48,29 +56,7 @@ The goal of this project is to answer a series of questions like this from the p
 
 
 
-#### What's more
-Variable
-
-1. ​    types of Assigning a variable
-2. ​    How can I get the type of object?,
-3. ​    Expressions. Diff b/w Curly brackets and Square brackets?
-4. ​    how you can compare 2 objects in GO?, 
-5. ​    Go 是传值还是传引用？
-6. ​    Go 面试官问我如何实现面向对象？
-7. ​    Go 结构体和结构体指针调用有什么区别吗？
-8. ​    Go new 和 make 是什么，差异在哪？
-9. ​    Go 结构体是否可以比较，为什么？
-10. ​    Interfaces
-11. ​    context 使用场景及注意事项
-12. ​    context 是如何一层一层通知子 context
-13. ​    What are Golang pointers?
-14. ​    string literals?
-15. ​    check the type of a variable at runtime in Go
-16. ​    What are the uses of an empty struct?
-17. ​    Shadowing in Go?
-18. ​    variadic functions in Go
-19. ​    byte and rune data types
-
+#### What's more   
 GC
 
 1. ​    How garbage collector works? ,
@@ -139,3 +125,8 @@ Overall
 10. ​    In Go, are there any good error handling practices?
 11. ​    How to config working environments, parameters
 12. ​    Go Version Update
+13. ​    Expressions. Diff b/w Curly brackets and Square brackets?
+
+
+
+​    Go 面试官问我如何实现面向对象？
