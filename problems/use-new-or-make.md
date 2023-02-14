@@ -46,17 +46,112 @@ In short, there are some distinct differences between them:
 
 #### Why?
 
-Implementation principles:
+From src/cmd/compile/internal/noder/transform.go , we can see this.
 
-- `make` function: It is a built-in function, a special memory allocation function used to create instances of built-in types. It implements the underlying memory allocation function at the bottom and also includes specific initialization steps.
-- `new` function: It is also a built-in function used to allocate an unnamed piece of memory and return a pointer to that memory. On the underlying implementation, it calls the memory allocation function to allocate memory for the object, but does not perform any initialization.
+```go
+// Corresponds to Builtin part of tcCall.
+func transformBuiltin(n *ir.CallExpr) ir.Node {
+   // n.Type() can be nil for builtins with no return value
+   assert(n.Typecheck() == 1)
+   fun := n.X.(*ir.Name)
+   op := fun.BuiltinOp
+
+   switch op {
+      ...
+      case ir.OMAKE:
+         return transformMake(n) // MAKE will trans to another KeyWords.
+      ...
+   }
+   ...
+}
+
+// Corresponds to typecheck.tcMake.
+func transformMake(n *ir.CallExpr) ir.Node {
+	args := n.Args
+
+	n.Args = nil
+	l := args[0]
+	t := l.Type()
+	assert(t != nil)
+
+	i := 1
+	var nn ir.Node
+	switch t.Kind() {
+	case types.TSLICE:
+		l = args[i]
+		i++
+		var r ir.Node
+		if i < len(args) {
+			r = args[i]
+			i++
+		}
+		nn = ir.NewMakeExpr(n.Pos(), ir.OMAKESLICE, l, r)
+
+	case types.TMAP:
+		if i < len(args) {
+			l = args[i]
+			i++
+		} else {
+			l = ir.NewInt(0)
+		}
+		nn = ir.NewMakeExpr(n.Pos(), ir.OMAKEMAP, l, nil)
+		nn.SetEsc(n.Esc())
+
+	case types.TCHAN:
+		l = nil
+		if i < len(args) {
+			l = args[i]
+			i++
+		} else {
+			l = ir.NewInt(0)
+		}
+		nn = ir.NewMakeExpr(n.Pos(), ir.OMAKECHAN, l, nil)
+	default:
+		panic(fmt.Sprintf("transformMake: unexpected type %v", t))
+	}
+
+	assert(i == len(args))
+	typed(n.Type(), nn)
+	return nn
+}
+```
+
+transformMake() Only allow 3 types of MAKE values,
+
+1. TSLICE
+2. TMAP
+3. TCHAN
+
+This is how make implements.
 
 
 
 From src/cmd/compile/internal/ir/fmt.go, we can see this.
 
-```
+```go
 ONEW:              "new",
+
+
+case ir.OCLOSE, ir.ONEW, ir.OUNSAFESTRINGDATA, ir.OUNSAFESLICEDATA:
+			// nothing more to do
+			return u1
 ```
 
-ONEW is the operation ENUM for new. 
+ONEW is the operation ENUM for new, and this keywords will not change. The IR will be SSA, just like this,
+
+```
+case ir.ONEW:
+   n := n.(*ir.UnaryExpr)
+   var rtype *ssa.Value
+   if x, ok := n.X.(*ir.DynamicType); ok && x.Op() == ir.ODYNAMICTYPE {
+      rtype = s.expr(x.RType)
+   }
+   return s.newObject(n.Type().Elem(), rtype)
+```
+
+
+
+Implementation principles:
+
+- `make` function: It is a built-in function, a special memory allocation function used to create instances of **built-in types**. It implements the underlying memory allocation function at the bottom and also includes specific initialization steps.
+- `new` function: It is also a built-in function used to allocate an unnamed piece of memory and return a pointer to that memory. On the underlying implementation, it calls the memory allocation function to allocate memory for the object, but does not perform any initialization.
