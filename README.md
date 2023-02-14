@@ -45,7 +45,9 @@ The goal of this project is to answer a series of questions like this from the p
 
 #### GPM
 
-1. [What is GPM and Why need P?](problems/what-is-gpm-and-why-need-p.md)
+1. [How Goroutine Works](problems/how-goroutine-works.md)
+2. [What is GPM and Why need P?](problems/what-is-gpm-and-why-need-p.md)
+3. 
 
 
 
@@ -92,16 +94,11 @@ GPM
 
 Goroutine
 
-1. ​    单核 CPU，开两个 Goroutine，其中一个死循环，会怎么样？
-2. ​    进程、线程都有 ID，为什么 Goroutine 没有 ID？
-3. ​    Goroutine 数量控制在多少合适，会影响 GC 和调度？
-4. ​    Goroutine 泄露的情况有哪些
-5. ​    Go 在什么时候会抢占 P
-6. ​    会诱发 Goroutine 挂起的 27 个原因
-7. ​    goroutine 的协程有什么特点，和线程相比？
-8. ​    channel 的内部实现是怎么样的？
-9. ​    对已经关闭的 channel 进行读写，会怎么样？
-10. ​    timer 
+1. 
+2. ​    channel 的内部实现是怎么样的？
+3. ​    对已经关闭的 channel 进行读写，会怎么样？
+4. ​    timer 
+5.   Go 在什么时候会抢占 P
 
 ​    
 Develop
