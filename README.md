@@ -43,72 +43,51 @@ The goal of this project is to answer a series of questions like this from the p
 4. [struct, Interfaces,  point and Object](problems/struct.md)
 5. [How Context Works](problems/how-context-works.md)
 
+
+
 #### GPM
 
 1. [How Goroutine Works](problems/how-goroutine-works.md)
 2. [What is GPM and Why need P?](problems/what-is-gpm-and-why-need-p.md)
-3. 
+3. Go 在什么时候会抢占 P
+4. Channel channel 的内部实现是怎么样的？对已经关闭的 channel 进行读写，会怎么样？
+5. timer
 
 
 
 #### GC
 
-1. ​	
-
-
-
-
-#### What's more   
-GC
-
 1. ​    How garbage collector works? ,
 2. ​    go 的内存分配是怎么样的？
 3. ​    Go 的逃逸行为是指？
 
-Map
 
-1. ​    how map works?
-2. ​    sync.map
-3. ​    为什么 Go map 和 slice 是非线程安全的？
-4. ​    Go sync.map 和原生 map 谁的性能好，为什么？
-5. ​    为什么 Go map 的负载因子是 6.5？
-6. ​    map 为什么是不安全的？
-7. ​    map 的 key 为什么得是可比较类型的？
-8. ​    Slice 的扩容机制， range, slice
-9. ​    slice 和 array 的区别
-10. ​    How can we copy a slice and a map in Go?
 
-Concurrency
+#### Map
 
-1. ​    sync.pool
-2. ​    mutex and a read-write lock in go?
-3. ​    什么是协程，协程和线程的区别和联系？
-4. ​    mutex 的正常模式、饥饿模式、自旋？
-5. ​    sync.Once 原理
-6. ​    waitgroup 
-7. ​    concurrent data access? Channels or Maps?
+1. [Map in Go](problems/map-in-go.md)
+2. [New One: Slice](problems/new-one-slice.md)
 
-GPM
 
-1. ​    Why need P?
 
-Goroutine
+#### Concurrency
 
-1. 
-2. ​    channel 的内部实现是怎么样的？
-3. ​    对已经关闭的 channel 进行读写，会怎么样？
-4. ​    timer 
-5.   Go 在什么时候会抢占 P
+1. [sync.map](problems/sync-map.md)
+2.   sync.pool
+3. ​    mutex and a read-write lock in go? mutex 的正常模式、饥饿模式、自旋？
+4. ​    sync.Once
+5. ​    waitgroup 
 
-​    
-Develop
+
+
+#### Develop
 
 1. ​    Godep
 2. ​    Gin
 
 ​    
 
-Overall
+#### Overall
 
 1. ​    详解 Go 程序的启动流程，你知道 g0，m0 是什么吗
 2. ​    Go defer 万恶的闭包问题
@@ -123,7 +102,4 @@ Overall
 11. ​    How to config working environments, parameters
 12. ​    Go Version Update
 13. ​    Expressions. Diff b/w Curly brackets and Square brackets?
-
-
-
-​    Go 面试官问我如何实现面向对象？
+14. Go 面试官问我如何实现面向对象？
