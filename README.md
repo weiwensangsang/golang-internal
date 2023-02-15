@@ -1,4 +1,4 @@
-# How GoLang works
+# How Golang works
 
 
 
