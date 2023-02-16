@@ -49,16 +49,14 @@ The goal of this project is to answer a series of questions like this from the p
 
 1. [How Goroutine Works](problems/how-goroutine-works.md)
 2. [What is GPM and Why need P?](problems/what-is-gpm-and-why-need-p.md)
-3. Go 在什么时候会抢占 P
-4. Channel channel 的内部实现是怎么样的？对已经关闭的 channel 进行读写，会怎么样？
-5. timer
+4. [How to Use Channel](problems/how-to-use-channel.md)
 
 
 
 #### GC
 
-1. ​    How garbage collector works? ,
-2. ​    go 的内存分配是怎么样的？
+1. [Go Memory Allocate](problems/go-memory-allocate.md)
+2. [How Garbage Collector Works? ]()
 3. ​    Go 的逃逸行为是指？
 
 
@@ -73,10 +71,11 @@ The goal of this project is to answer a series of questions like this from the p
 #### Concurrency
 
 1. [sync.map](problems/sync-map.md)
-2.   sync.pool
+2. sync.pool
 3. ​    mutex and a read-write lock in go? mutex 的正常模式、饥饿模式、自旋？
-4. ​    sync.Once
-5. ​    waitgroup 
+4.    sync.Once
+5.  waitgroup 
+6. timer
 
 
 
