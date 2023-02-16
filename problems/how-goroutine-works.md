@@ -137,7 +137,7 @@ The Goroutine scheduler P and the OS scheduler are combined through M, each M re
 
 
 
-#### Main function
+### Main function
 
 We can start with a very speical Goroutine: g0. G0 is for main function so it means main is also a goroutine.
 
@@ -215,7 +215,7 @@ ok:
 
 
 
-#### The keyword go
+### The keyword go
 
 Another way to create Goroutine is use **go**
 
@@ -237,7 +237,7 @@ go f(args) = runtime.newproc(siz int32, fn *funcval)
 
 
 
-#### Answers
+### Answers
 
 1. **Single-core CPU, open two Goroutines, one of which has an infinite loop, what will happen?**
 

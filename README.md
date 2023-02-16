@@ -48,7 +48,6 @@ The goal of this project is to answer a series of questions like this from the p
 #### GPM
 
 1. [How Goroutine Works](problems/how-goroutine-works.md)
-2. [What is GPM and Why need P?](problems/what-is-gpm-and-why-need-p.md)
 4. [How to Use Channel](problems/how-to-use-channel.md)
 
 
