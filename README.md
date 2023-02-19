@@ -35,13 +35,14 @@ The goal of this project is to answer a series of questions like this from the p
 
 ### Problems
 
-#### Variable
+#### Variable and Keywords
 
 1. [How to Swap the Values of Two Variables](problems/swap-the-values-of-two-variables.md)
 2. [Use New or Make](problems/use-new-or-make.md)
-3. string literals, byte and rune data types
-4. [struct, Interfaces,  point and Object](problems/struct.md)
+3. [String literals, Byte and Rune](problems/string.md)
+4. [Struct, Interfaces,  Point and Object](problems/struct-and-object.md)
 5. [How Context Works](problems/how-context-works.md)
+6. [defer、panic、recover](problems/defer-panic-recover.md)
 
 
 
@@ -56,7 +57,6 @@ The goal of this project is to answer a series of questions like this from the p
 
 1. [Go Memory Allocate](problems/go-memory-allocate.md)
 2. [How Garbage Collector Works? ]()
-3. ​    Go 的逃逸行为是指？
 
 
 
@@ -70,34 +70,25 @@ The goal of this project is to answer a series of questions like this from the p
 #### Concurrency
 
 1. [sync.map](problems/sync-map.md)
-2. sync.pool
-3. ​    mutex and a read-write lock in go? mutex 的正常模式、饥饿模式、自旋？
-4.    sync.Once
-5.  waitgroup 
-6. timer
+2. [More sync: sync.pool, sync.once](problems/more-sync.md)
+3. [Mutex, waitgroup and timer](problems/more-concurrency-tools.md)
 
 
 
-#### Develop
+#### Develop Tools
 
-1. ​    Godep
-2. ​    Gin
+1. [Godep](problems/godep.md)
+2. [Gin](problems/gin.md)
 
 ​    
 
-#### Overall
+#### Code Practices
 
-1. ​    详解 Go 程序的启动流程，你知道 g0，m0 是什么吗
-2. ​    Go defer 万恶的闭包问题
-3. ​    相比较于其他语言, Go 有什么优势或者特点？
-4. ​    defer、panic、recover 
-5. ​    What are Golang packages?
-6. ​    Is Golang case sensitive or insensitive?
-7. ​    return multiple values from a function in Go?
-8. ​    Type Assertion in Go
-9. ​    How is GoPATH different from GoROOT variables in Go?
-10. ​    In Go, are there any good error handling practices?
-11. ​    How to config working environments, parameters
-12. ​    Go Version Update
-13. ​    Expressions. Diff b/w Curly brackets and Square brackets?
-14. Go 面试官问我如何实现面向对象？
+1. [Go Version Update](problems/go-versions.md)
+2. [What are Golang packages?](problems/.md)
+3. [Is Golang case sensitive or insensitive?](problems/golang-sensitive-problem.md)
+4. [return multiple values from a function in Go?](problems/return-multiple-values.md)
+5. [Type Assertion in Go](problems/type-aeeertion.md)
+6. [How is GoPATH different from GoROOT variables in Go?](problems/gopath-and-goroot.md)
+7. [In Go, are there any good error handling practices?](problems/error-handling.md)
+8. [Expressions. Diff b/w Curly brackets and Square brackets?](problems/curly-brackets-and-square-brackets.md)
