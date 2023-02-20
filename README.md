@@ -42,7 +42,7 @@ The goal of this project is to answer a series of questions like this from the p
 3. [String literals, Byte and Rune](problems/string.md)
 4. [Struct, Interfaces,  Point and Object](problems/struct-and-object.md)
 5. [How Context Works](problems/how-context-works.md)
-6. [defer、panic、recover](problems/defer-panic-recover.md)
+6. [How to use defer](problems/defer.md)
 
 
 
