@@ -1,4 +1,4 @@
-# How Golang works
+# Golang Internal
 
 
 
