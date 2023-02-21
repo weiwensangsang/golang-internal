@@ -216,12 +216,4 @@ The following first analyzes the implementation method of defer allocation on th
 
 Defer
 
-
-
-
-
-
-
-Go defer 万恶的闭包问题
-Coorperation with Google Go Developer Team with Go internal compiler issuue RRRRRRRRRRRRR, fixed in
-version1.18. uuuuuuuuuuuuuuuuuhttps://cloud.tencent.com/developer/article/2137023
+https://github.com/golang/go/issues/51839
