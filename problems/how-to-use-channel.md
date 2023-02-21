@@ -184,3 +184,5 @@ func makechan(t *chantype, size int) *hchan {
    ...
 }
 ```
+
+fixme: not finished yet
