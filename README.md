@@ -40,9 +40,10 @@ The goal of this project is to answer a series of questions like this from the p
 1. [How to Swap the Values of Two Variables](problems/swap-the-values-of-two-variables.md)
 2. [Use New or Make](problems/use-new-or-make.md)
 3. [String literals, Byte and Rune](problems/string.md)
-4. [Struct, Interfaces,  Point and Object](problems/struct-and-object.md)
+4. [Struct, Interface, Pointer](problems/struct-interface-pointer.md)
 5. [How Context Works](problems/how-context-works.md)
 6. [How to use defer](problems/defer.md)
+7. [Panic and Recover]()
 
 
 
