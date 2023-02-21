@@ -1,1 +1,3 @@
-​    mutex and a read-write lock in go? mutex 的正常模式、饥饿模式、自旋？
+    mutex and a read-write lock in go? mutex 的正常模式、饥饿模式、自旋？
+
+fixme: not start
