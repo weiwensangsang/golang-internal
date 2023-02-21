@@ -77,8 +77,8 @@ The goal of this project is to answer a series of questions like this from the p
 
 #### Develop Tools
 
-1. [Godep](problems/godep.md)
-2. [Gin](problems/gin.md)
+1. [Gin](problems/gin.md)
+2. Godep
 
  
 
