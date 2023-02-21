@@ -86,7 +86,7 @@ The goal of this project is to answer a series of questions like this from the p
 #### Code Practices
 
 1. [Go Version Update](problems/go-versions.md)
-2. [What are Golang packages?](problems/.md)
+2. [What are Golang packages?](problems/package.md)
 3. [Is Golang case sensitive or insensitive?](problems/golang-sensitive-problem.md)
 4. [return multiple values from a function in Go?](problems/return-multiple-values.md)
 5. [Type Assertion in Go](problems/type-aeeertion.md)
