@@ -69,10 +69,6 @@ value of b using * operator: 42
 
 
 
-
-
-
-
 ### Structure
 
 Classes are an important part of OOP. In Go, there is a similar concept called struct.

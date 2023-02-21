@@ -2,7 +2,7 @@
 
 
 
-Let us start with code. What is the result for this code?
+Let us start with code. What is the result for this code? defer is first in last out, This is very natural, the following statement will depend on the previous resource, so if the previous resource is released first, the subsequent statement cannot be executed.
 
 ```go
 package main
@@ -26,8 +26,6 @@ func defer_call() {
 
 Little weird but it should be,
 
-
-
 ```text
 3
 2
@@ -40,8 +38,6 @@ panic: ERROR
 ### defer
 
 The execution logic of defer, return, and return value should be: return is executed first, and return is responsible for writing the result into the return value; then defer starts to perform some finishing work; finally, the function exits with the current return value.
-
-
 
 In fact, to understand the defer closure, as long as you understand the following points, you will fully understand
 

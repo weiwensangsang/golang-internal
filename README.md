@@ -41,16 +41,16 @@ The goal of this project is to answer a series of questions like this from the p
 2. [Use New or Make](problems/use-new-or-make.md)
 3. [String literals, Byte and Rune](problems/string.md)
 4. [Struct, Interface, Pointer](problems/struct-interface-pointer.md)
-5. [How Context Works](problems/how-context-works.md)
-6. [How to use defer](problems/defer.md)
-7. [Panic and Recover]()
+5. [How to use defer](problems/defer.md)
+6. [Panic and Recover](problems/panic-and-recover.md)
 
 
 
 #### GPM
 
 1. [How Goroutine Works](problems/how-goroutine-works.md)
-4. [How to Use Channel](problems/how-to-use-channel.md)
+2. [How to Use Channel](problems/how-to-use-channel.md)
+3. [How Context Works](problems/how-context-works.md)
 
 
 
