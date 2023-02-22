@@ -214,7 +214,54 @@ The following first analyzes the implementation method of defer allocation on th
 
 
 
-Defer
+### One issue
 
+This issue fixed in Go 1.18 and pretty funny. What happens if there is a defer function in deadcode?
 https://github.com/golang/go/issues/51839
-fixme: not finished yet
+
+
+
+```go
+package main
+
+func main() {
+	testRecover()
+
+}
+
+func testRecover() {
+	if false {
+		func() {
+			defer func() {
+				_ = recover()
+			}()
+		}()
+	}
+}
+```
+
+
+Before 1.18, it will create a error message.
+
+```
+walk .   
+RECOVER INTER-interface {} tc(1)  internal compiler error: walkExpr: switch 1 unknown op RECOVER
+```
+
+
+How to fix? 
+
+```go
+func markHiddenClosureDead(n ir.Node) {
+   if n.Op() != ir.OCLOSURE {
+      return
+   }
+   clo := n.(*ir.ClosureExpr)
+   if clo.Func.IsHiddenClosure() {
+      clo.Func.SetIsDeadcodeClosure(true)
+   }
+   ir.VisitList(clo.Func.Body, markHiddenClosureDead) // add this new line to fix this issue.
+}
+```
+
+This is a clever way to use recursion to continuously parse ir nodes to fix this type of deadcode problem.
