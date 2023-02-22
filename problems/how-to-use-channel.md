@@ -186,3 +186,5 @@ func makechan(t *chantype, size int) *hchan {
 ```
 
 fixme: not finished yet
+
+https://juejin.cn/post/6875325172249788429
