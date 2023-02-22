@@ -12,6 +12,79 @@ Although we can also use shared memory with mutex for communication in Go langua
 
 
 
+### Use it
+
+Here is the most simple way to use channel.
+
+```go
+package main
+import "fmt"
+
+func main() {
+  c := make(chan int)
+  go func() {
+    // send 1 to channel
+    c <- 1
+  }()
+  // get data from channel
+  x := <- c
+  close(c)
+  fmt.Println(x)
+}
+
+func makechan(t *chantype, size int) *hchan {} //make(chan int)对应
+func chansend1(c *hchan, elem unsafe.Pointer) {} //ch <- 1
+func chanrecv1(c *hchan, elem unsafe.Pointer) {} //x := <- c
+func closechan(c *hchan) {} //close(c)
+```
+
+
+
+The next code is to create an unbuffered **channel**. Once a **goroutine** sends data to the **channel**, the current **goroutine** will be blocked until other **goroutines** consume the data in the **channel** before continuing to run.
+
+```go
+ ch := make(chan int)
+```
+
+There is another buffered **channel**, which is created like this:
+
+```text
+ch := make(chan int, 2)
+```
+
+
+
+The second parameter indicates the capacity of the **channel** to buffer data. As long as the total number of elements in the current **channel** is not greater than the bufferable capacity, the current **goroutine** will not be blocked.
+
+
+
+### **select**
+
+When we want to communicate with multiple **goroutines**, we will use the **select** to manage the communication data of multiple **channel:
+
+
+
+```go
+ ch1 := make(chan struct{})
+ ch2 := make(chan struct{})
+
+ // ch1, ch2 发送数据
+ go sendCh1(ch1)
+ go sendCh1(ch2)
+
+ // channel 数据接受处理
+ for {
+  select {
+  case <-ch1:
+   doSomething1()
+  case <-ch2:
+   doSomething2()
+  }
+ }
+```
+
+
+
 ### runtime.hchan
 
 Channel in Go language is represented by runtime.hchan structure at runtime. When we create a new Channel in Go language, what we actually create is the following structure:
@@ -185,6 +258,130 @@ func makechan(t *chantype, size int) *hchan {
 }
 ```
 
-fixme: not finished yet
 
-https://juejin.cn/post/6875325172249788429
+
+### How channel work?
+
+#### no-buffer channel 
+
+##### write before reading
+
+There are 2 **goroutines** using **channel** communication, in the order of writing first and then reading, the specific process is as follows:
+
+
+
+channel
+
+|     buf    |
+
+|     lock   |
+
+|     ...       |
+
+|   sendq |   <===  G1 
+
+|   recvq  |
+
+
+
+It can be seen that because the **channel** is unbuffered, G1 is temporarily suspended in the sendq queue, and then G1 calls gopark to sleep.
+
+Then, another **goroutine** comes to the **channel** to read data:
+
+
+
+channel
+
+|     buf    |
+
+|     lock   |
+
+|     ...       |                          goready
+
+|   sendq |   ------  G1    <=======>  G2
+
+|   recvq  |                          data
+
+
+
+At this time, G2 finds that there are **goroutines** in the sendq waiting queue, so it directly copies the data from G1, and sets the goready function for G1, so that when the next scheduling occurs, G1 can continue to run and will be removed from the waiting queue
+
+##### read before writing
+
+G1 want to read but get nothing, so this **goroutine** should sleep in the recvq
+
+
+
+channel
+
+|     buf    |
+
+|     lock   |
+
+|     ...       |
+
+|   sendq |  
+
+|   recvq  |   <===  G1 
+
+
+
+When G2 is writing data, it finds that there are **goroutines** in the recvq queue, so it directly sends the data to G1. At the same time, set the G1 goready function and wait for the next scheduled operation.
+
+
+
+channel
+
+|     buf    |
+
+|     lock   |
+
+|     ...       |                          
+
+|   sendq |                    goready and ata
+
+|   recvq  |    ------  G1    <=======  G2
+
+
+
+#### channel with buffer
+
+##### write before reading
+
+
+
+channel            data
+
+|     buf    |  <=======  G1 (if G1 can write data into buf,)
+
+|     lock   |
+
+|     ...       |                          
+
+|   sendq |   <=======  G1 (if G1 can not write data into buf, it means buf is full of data,,)
+
+|   recvq  |    
+
+
+
+When G2 wants to read data, it will read from the buffer data area first, and after reading, it will check the sendq queue. If the **goroutine** has a waiting queue, it will add the data on it to the buffer data area, and Also set the goready function on it.
+
+
+
+channel              1. read data
+
+|     buf    |  =========>  G2
+
+|     lock   |
+
+|     ...       |                2. scan sendq and push G1 to buf
+
+|   sendq |  ------  G1 ========> to buf
+
+|   recvq  |  
+
+
+
+#### channel read first, then write
+
+This situation is the same process as unbuffered first read and then write, and will not be repeated here.
