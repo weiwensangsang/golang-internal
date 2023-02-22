@@ -41,7 +41,7 @@ The goal of this project is to answer a series of questions like this from the p
 2. [Use New or Make](problems/use-new-or-make.md)
 3. [String literals, Byte and Rune](problems/string.md)
 4. [Struct, Interface, Pointer](problems/struct-interface-pointer.md)
-5. [How to use defer](problems/defer.md)
+5. [How to Use Defer](problems/defer.md)
 6. [Panic and Recover](problems/panic-and-recover.md)
 
 
@@ -70,9 +70,9 @@ The goal of this project is to answer a series of questions like this from the p
 
 #### Concurrency
 
-1. [sync.map](problems/sync-map.md)
-2. [More sync: sync.pool, sync.once](problems/more-sync.md)
-3. [Mutex, waitgroup and timer](problems/more-concurrency-tools.md)
+1. [Sync.map](problems/sync-map.md)
+2. [More Sync: Sync.pool, Sync.once](problems/more-sync.md)
+3. [Mutex, Waitgroup and Timer](problems/more-concurrency-tools.md)
 
 
 
@@ -86,10 +86,10 @@ The goal of this project is to answer a series of questions like this from the p
 #### Code Practices
 
 1. [Go Version Update](problems/go-versions.md)
-2. [What are Golang packages?](problems/package.md)
-3. [Is Golang case sensitive or insensitive?](problems/golang-sensitive-problem.md)
-4. [return multiple values from a function in Go?](problems/return-multiple-values.md)
+2. [What Are Golang Packages?](problems/package.md)
+3. [Is Golang Case sensitive or Insensitive?](problems/golang-sensitive-problem.md)
+4. [Return Multiple Values From A Function in Go?](problems/return-multiple-values.md)
 5. [Type Assertion in Go](problems/type-aeeertion.md)
-6. [How is GoPATH different from GoROOT variables in Go?](problems/gopath-and-goroot.md)
-7. [In Go, are there any good error handling practices?](problems/error-handling.md)
-8. [Expressions. Diff b/w Curly brackets and Square brackets?](problems/curly-brackets-and-square-brackets.md)
+6. [How Is GoPATH Different From GoROOT Variables In Go?](problems/gopath-and-goroot.md)
+7. [In Go, Are There Any Good Error Handling Practices?](problems/error-handling.md)
+8. [Expressions. Diff b/w Curly Brackets and Square Brackets?](problems/curly-brackets-and-square-brackets.md)
