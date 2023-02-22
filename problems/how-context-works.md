@@ -7,6 +7,20 @@ Always, we have some questions about context.
 
 
 
+**Context** can control the call of **Goroutine**'s operation, timeout, and cancellation method. 
+
+Is there any other implementation method for these functions.？
+
+ Of course, there are, controlling the operation of **Goroutine**, can be implemented through the **Select**+**Channel** mechanism, overtime control can also be implemented through the **Timer**, the cancellation method can also send a signal to the **Channel**, and the notification method can be exited.
+
+ Since **Context** can be implemented, there are other ways to achieve it, why do I still have to **Context**?
+
+ In some complicated scenarios, the control is very cumbersome through **Channel** and other methods, and using **Context** can easily implement the above functions.
+
+
+
+
+
 In Go services, an independent **goroutine** is often used to process a request, but in this **goroutine**, other **goroutines** may be opened to perform some specific transactions, such as database, RPC, etc. At the same time, this group of **goroutines** may also need Common access to some special values, such as user token, request expiration time, etc. When a request times out, we hope that all **goroutines** related to this request can exit quickly to reclaim system resources.
 
 The context package is open-sourced by Google and added to the standard library in Go 1.7. Using it, you can easily pass specific values, cancellation signals, and deadlines to all goroutines involved in the request.
