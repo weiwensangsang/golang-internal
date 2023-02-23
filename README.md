@@ -57,7 +57,7 @@ The goal of this project is to answer a series of questions like this from the p
 #### GC
 
 1. [Go Memory Allocate](problems/go-memory-allocate.md)
-2. [How Garbage Collector Works? ]()
+2. [How Garbage Collector Works? ](problems/go-garbage-collector.md)
 
 
 
