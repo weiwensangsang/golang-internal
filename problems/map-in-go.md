@@ -136,3 +136,24 @@ There are two ways for map to trigger expansion:
 ![load](../pictures/load.png)
 
 ![overflow](../pictures/overflow.png)
+
+
+
+### One more thing:
+
+If you check the source code of Go: hashmap_fast.go#L118, you will see that the **hashWriting** flag will be checked when reading. If there is this flag, a concurrency error will be reported.
+
+The error message is: **fatal error: concurrent map read and map write.**
+
+This flag is set when writing: hashmap.go#L542
+
+```go
+h.flags |= hashWriting
+This mark will be canceled after hashmap.go#L628 is set.
+```
+
+Of course, there are several concurrent read and write checks in the code, such as checking whether there is concurrent writing when writing, similar writing when deleting keys, concurrent reading and writing when traversing, etc.
+
+I think this is because running concurrent operations on **map** will produce many unbelievable situations. Go has learned this lesson and decided to prohibit concurrent operations on map. 
+
+In the Java language, concurrent reads of hashmaps can generate infinite loops in some versions.
