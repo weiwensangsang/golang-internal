@@ -72,7 +72,9 @@ The goal of this project is to answer a series of questions like this from the p
 
 1. [Sync.map](problems/sync-map.md)
 2. [More Sync: Sync.pool, Sync.once](problems/more-sync.md)
-3. [Mutex, Waitgroup and Timer](problems/more-concurrency-tools.md)
+3. [Mutex](problems/mutex.md)
+4. [Waitgroup](problems/waitgroup.md)
+5. [Timer](problems/timer.md)
 
 
 
