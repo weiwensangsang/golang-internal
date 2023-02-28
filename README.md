@@ -87,11 +87,11 @@ The goal of this project is to answer a series of questions like this from the p
 
 #### Code Practices
 
-1. [Go Version Update](problems/go-versions.md)
+1. Go Version Update
 2. [What Are Golang Packages?](problems/package.md)
 3. [Is Golang Case sensitive or Insensitive?](problems/golang-sensitive-problem.md)
 4. [Return Multiple Values From A Function in Go?](problems/return-multiple-values.md)
-5. [Type Assertion in Go](problems/type-aeeertion.md)
+5. [Type Assertion in Go](problems/type-assertion.md)
 6. [How Is GoPATH Different From GoROOT Variables In Go?](problems/gopath-and-goroot.md)
 7. [In Go, Are There Any Good Error Handling Practices?](problems/error-handling.md)
-8. [Expressions. Diff b/w Curly Brackets and Square Brackets?](problems/curly-brackets-and-square-brackets.md)
+8. Expressions. Diff b/w Curly Brackets and Square Brackets?
