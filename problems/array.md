@@ -24,7 +24,3 @@ func TestSolution(t *testing.T) {
 ```
 
 
-
-Fixme
-
-https://github.com/yuchia0221/Grind-75
