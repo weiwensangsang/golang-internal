@@ -87,6 +87,26 @@ The goal of this project is to answer a series of questions like this from the p
 
 #### Code Practices
 
+1.  [Array](problems/array.md)
+2.  Stack
+3.  Linked-List
+4.  String
+5.  Binary Tree
+6.  Binary Search
+7.  Graph
+8.  Dynamic Programming
+9.  Binary Search Tree
+10. Hash Table
+11.  Binary
+12.  Heap
+13.  Trie
+14.  Recursion
+15.  Matrix
+
+
+
+#### What's more
+
 1. Go Version Update
 2. [What Are Golang Packages?](problems/package.md)
 3. [Is Golang Case sensitive or Insensitive?](problems/golang-sensitive-problem.md)
